@@ -13,18 +13,12 @@ public class InputReader {
 
     public AddressBook read(String filePath) throws IOException {
         AddressBook addressBook = new AddressBook();
+
         Files.lines(Paths.get(filePath))
-                .map(s -> {
-                            try {
-                                return new Contact(s);
-                            } catch (ParseException e) {
-                                e.printStackTrace();
-                            }
-                            return null;
-                        }
-                    )
+                .map(ContactFactory::fromAddressBookFileLine)
                 .filter(Objects::nonNull)
                 .forEach(e -> addressBook.addContact(e));
+
         return addressBook;
     }
 

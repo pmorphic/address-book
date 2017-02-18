@@ -7,17 +7,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Contact {
-    static final SimpleDateFormat DOB_FORMATTER = new SimpleDateFormat("d/M/yy");
-
     private String name;
     private Gender gender;
     private Date dateOfBirth;
 
-    public Contact(String addressBookLine) throws ParseException {
-        String[] parts = addressBookLine.split(",");
-        this.name = parts[0].trim();
-        this.gender = Gender.fromName(parts[1].trim());
-        this.dateOfBirth = DOB_FORMATTER.parse(parts[2].trim());
+    public Contact(String name, Gender gender, Date dateOfBirth) {
+        this.name = name;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getName() {

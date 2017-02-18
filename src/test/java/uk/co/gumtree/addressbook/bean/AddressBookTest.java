@@ -25,7 +25,7 @@ public class AddressBookTest {
 
     @Test
     public void itShouldAddContactToAddressBook() throws ParseException {
-        Contact contact = new Contact("name, Female, 16/03/66");
+        Contact contact = new Contact("name", Gender.F, new Date());
         underTest.addContact(contact);
         assertEquals(1, underTest.getContacts().size());
         assertEquals(contact, underTest.getContacts().get(0));
@@ -33,7 +33,7 @@ public class AddressBookTest {
 
     @Test
     public void itShouldReturnImmutableListOfContacts() throws ParseException {
-        Contact contact = new Contact("name, Female, 16/03/66");
+        Contact contact = new Contact("name", Gender.F, new Date());
         underTest.addContact(contact);
         List<Contact> actual = underTest.getContacts();
 

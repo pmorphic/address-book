@@ -25,6 +25,7 @@ public class InputReaderTest {
         AddressBook addressBook = underTest.read(filePath);
         assertNotNull(addressBook);
         assertEquals(5, addressBook.getContacts().size());
+
     }
 
 }
