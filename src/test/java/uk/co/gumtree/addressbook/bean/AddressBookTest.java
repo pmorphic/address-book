@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import uk.co.gumtree.addressbook.enums.Gender;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -23,16 +24,16 @@ public class AddressBookTest {
     }
 
     @Test
-    public void itShouldAddContactToAddressBook() {
-        Contact contact = new Contact("name", Gender.F, new Date());
+    public void itShouldAddContactToAddressBook() throws ParseException {
+        Contact contact = new Contact("name, Female, 16/03/66");
         underTest.addContact(contact);
         assertEquals(1, underTest.getContacts().size());
         assertEquals(contact, underTest.getContacts().get(0));
     }
 
     @Test
-    public void itShouldReturnImmutableListOfContacts() {
-        Contact contact = new Contact("name", Gender.F, new Date());
+    public void itShouldReturnImmutableListOfContacts() throws ParseException {
+        Contact contact = new Contact("name, Female, 16/03/66");
         underTest.addContact(contact);
         List<Contact> actual = underTest.getContacts();
 
