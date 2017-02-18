@@ -1,7 +1,9 @@
 package uk.co.gumtree.addressbook.service;
 
-public class InputReader {
-    public void read(String filePath) {
+import uk.co.gumtree.addressbook.bean.AddressBook;
 
+public class InputReader {
+    public AddressBook read(String filePath) {
+        return new AddressBook();
     }
 }
