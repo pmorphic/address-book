@@ -14,4 +14,7 @@ public class AddressBook {
         return contacts;
     }
 
+    public void addContact(Contact contact) {
+        contacts.add(contact);
+    }
 }
