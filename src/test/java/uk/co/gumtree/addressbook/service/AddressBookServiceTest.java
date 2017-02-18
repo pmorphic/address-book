@@ -11,6 +11,7 @@ import uk.co.gumtree.addressbook.bean.Contact;
 import uk.co.gumtree.addressbook.enums.Gender;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
@@ -18,6 +19,8 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class AddressBookServiceTest {
     @Mock private AddressBook addressBook;
+    private Contact oldestContact = ContactFactory.fromAddressBookFileLine("Wes Jackson, Male, 14/08/74");
+
     private AddressBookService underTest;
 
     @Before
@@ -30,33 +33,61 @@ public class AddressBookServiceTest {
         when(addressBook.getContacts()).thenReturn(new ArrayList<Contact>());
 
         long actual = underTest.getCountByGender(Gender.M);
+
         assertEquals(0, actual);
     }
 
     @Test
     public void itShouldReturnNumberOfMales() {
-        Contact contact1 = ContactFactory.fromAddressBookFileLine("Bill McKnight, Male, 16/03/77");
-        Contact contact2 = ContactFactory.fromAddressBookFileLine("Paul Robinson, Male, 15/01/85");
-        Contact contact3 = ContactFactory.fromAddressBookFileLine("Gemma Lane, Female, 20/11/91");
-        Contact contact4 = ContactFactory.fromAddressBookFileLine("Sarah Stone, Female, 20/09/80");
-        Contact contact5 = ContactFactory.fromAddressBookFileLine("Wes Jackson, Male, 14/08/74");
-        when(addressBook.getContacts()).thenReturn(ImmutableList.of(contact1, contact2, contact3, contact4, contact5));
+        when(addressBook.getContacts()).thenReturn(getDefaultContacts());
 
         long actual = underTest.getCountByGender(Gender.M);
+
         assertEquals(3, actual);
     }
 
     @Test
     public void itShouldReturnNumberOfFemales() {
+        when(addressBook.getContacts()).thenReturn(getDefaultContacts());
+
+        long actual = underTest.getCountByGender(Gender.F);
+
+        assertEquals(2, actual);
+    }
+
+    @Test
+    public void itShouldReturnOldestPerson() {
+        when(addressBook.getContacts()).thenReturn(getDefaultContacts());
+
+        Contact actual = underTest.getOldestContact();
+
+        assertEquals(oldestContact, actual);
+    }
+
+    @Test
+    public void getOldestPersonShouldReturnContactIfOnly1ContactInAddressBook() {
+        when(addressBook.getContacts()).thenReturn(ImmutableList.of(oldestContact));
+
+        Contact actual = underTest.getOldestContact();
+
+        assertEquals(oldestContact, actual);
+    }
+
+    @Test
+    public void getOldestPersonShouldReturnNullIfNoContactInAddressBook() {
+        when(addressBook.getContacts()).thenReturn(ImmutableList.of(oldestContact));
+
+        Contact actual = underTest.getOldestContact();
+
+        assertEquals(oldestContact, actual);
+    }
+
+    private List<Contact> getDefaultContacts() {
         Contact contact1 = ContactFactory.fromAddressBookFileLine("Bill McKnight, Male, 16/03/77");
         Contact contact2 = ContactFactory.fromAddressBookFileLine("Paul Robinson, Male, 15/01/85");
         Contact contact3 = ContactFactory.fromAddressBookFileLine("Gemma Lane, Female, 20/11/91");
         Contact contact4 = ContactFactory.fromAddressBookFileLine("Sarah Stone, Female, 20/09/80");
-        Contact contact5 = ContactFactory.fromAddressBookFileLine("Wes Jackson, Male, 14/08/74");
-        when(addressBook.getContacts()).thenReturn(ImmutableList.of(contact1, contact2, contact3, contact4, contact5));
-
-        long actual = underTest.getCountByGender(Gender.F);
-        assertEquals(2, actual);
+        return ImmutableList.of(contact1, contact2, contact3, contact4, oldestContact);
     }
 
 }

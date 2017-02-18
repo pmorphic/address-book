@@ -32,6 +32,11 @@ public class AddressBookTest {
     }
 
     @Test
+    public void itShouldEmptyListIfNoContacts() throws ParseException {
+        assertEquals(0, underTest.getContacts().size());
+    }
+
+    @Test
     public void itShouldReturnImmutableListOfContacts() throws ParseException {
         Contact contact = new Contact("name", Gender.F, new Date());
         underTest.addContact(contact);
