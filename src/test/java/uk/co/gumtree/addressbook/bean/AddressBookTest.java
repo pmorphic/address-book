@@ -5,6 +5,7 @@ import org.junit.Test;
 import uk.co.gumtree.addressbook.enums.Gender;
 
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -27,6 +28,20 @@ public class AddressBookTest {
         underTest.addContact(contact);
         assertEquals(1, underTest.getContacts().size());
         assertEquals(contact, underTest.getContacts().get(0));
+    }
+
+    @Test
+    public void itShouldReturnImmutableListOfContacts() {
+        Contact contact = new Contact("name", Gender.F, new Date());
+        underTest.addContact(contact);
+        List<Contact> actual = underTest.getContacts();
+
+        try {
+            actual.add(contact);
+            fail("Expected UnsupportedOperationException");
+        } catch (UnsupportedOperationException e) {
+
+        }
     }
 
 }

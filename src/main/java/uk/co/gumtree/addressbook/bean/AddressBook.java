@@ -1,5 +1,7 @@
 package uk.co.gumtree.addressbook.bean;
 
+import com.google.common.collect.ImmutableList;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +13,7 @@ public class AddressBook {
     }
 
     public List<Contact> getContacts() {
-        return contacts;
+        return ImmutableList.copyOf(contacts);
     }
 
     public void addContact(Contact contact) {
