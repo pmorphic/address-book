@@ -8,15 +8,17 @@ import java.util.Objects;
 
 public class InputReader {
 
-    public AddressBook read(String filePath) throws IOException {
-        AddressBook addressBook = new AddressBook();
+    private final AddressBookService addressBookService;
 
+    public InputReader(AddressBookService addressBookService) {
+        this.addressBookService = addressBookService;
+    }
+
+    public void read(String filePath) throws IOException {
         Files.lines(Paths.get(filePath))
                 .map(ContactFactory::fromAddressBookFileLine)
                 .filter(Objects::nonNull)
-                .forEach(e -> addressBook.addContact(e));
-
-        return addressBook;
+                .forEach(addressBookService::addContact);
     }
 
 }

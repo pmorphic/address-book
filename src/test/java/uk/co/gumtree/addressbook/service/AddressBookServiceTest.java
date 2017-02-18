@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -108,6 +109,15 @@ public class AddressBookServiceTest {
         underTest.getContactByName("sss");
     }
 
+    @Test
+    public void itShouldAddContact() {
+        when(addressBook.getContacts()).thenReturn(ImmutableList.of(oldestContact));
+
+        underTest.addContact(oldestContact);
+
+        verify(addressBook).addContact(oldestContact);
+    }
+    
     private List<Contact> getDefaultContacts() {
         Contact contact1 = ContactFactory.fromAddressBookFileLine("Bill McKnight, Male, 16/03/77");
         Contact contact2 = ContactFactory.fromAddressBookFileLine("Paul Robinson, Male, 15/01/85");

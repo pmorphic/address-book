@@ -33,4 +33,8 @@ public class AddressBookService {
                 .findFirst()
                 .get();
     }
+
+    public void addContact(Contact contact) {
+        addressBook.addContact(contact);
+    }
 }
