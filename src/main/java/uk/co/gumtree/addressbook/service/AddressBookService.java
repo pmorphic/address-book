@@ -50,7 +50,10 @@ public class AddressBookService {
         }
 
         addressBook.addContact(contact);
-
     }
 
+
+    public int getAgeDifferenceInDays(Contact contact1, Contact contact2) {
+        return 0;
+    }
 }
