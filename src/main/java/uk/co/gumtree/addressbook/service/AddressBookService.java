@@ -4,6 +4,8 @@ import uk.co.gumtree.addressbook.bean.AddressBook;
 import uk.co.gumtree.addressbook.bean.Contact;
 import uk.co.gumtree.addressbook.enums.Gender;
 
+import java.util.List;
+
 public class AddressBookService {
     private final AddressBook addressBook;
 
@@ -26,4 +28,11 @@ public class AddressBookService {
                 .get();
     }
 
+    public Contact getContactByName(String name) {
+        return addressBook.getContacts()
+                .stream()
+                .filter(e -> e.getName().equals(name))
+                .findFirst()
+                .get();
+    }
 }
