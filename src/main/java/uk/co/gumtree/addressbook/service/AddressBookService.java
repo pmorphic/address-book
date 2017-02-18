@@ -10,8 +10,7 @@ public class AddressBookService {
         this.addressBook = addressBook;
     }
 
-
-    public int getCountByGender(Gender gender) {
-        return 0;
+    public long getCountByGender(Gender gender) {
+        return addressBook.getContacts().stream().filter(e -> e.getGender() == gender).count();
     }
 }
