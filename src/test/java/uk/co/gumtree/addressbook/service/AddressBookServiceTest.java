@@ -12,6 +12,7 @@ import uk.co.gumtree.addressbook.enums.Gender;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
@@ -98,6 +99,13 @@ public class AddressBookServiceTest {
         Contact actual = underTest.getContactByName(oldestContact.getName().toUpperCase());
 
         assertEquals(oldestContact, actual);
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void itShouldThrowIfContactNotFound() {
+        when(addressBook.getContacts()).thenReturn(getDefaultContacts());
+
+        underTest.getContactByName("sss");
     }
 
     private List<Contact> getDefaultContacts() {

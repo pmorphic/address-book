@@ -4,8 +4,6 @@ import uk.co.gumtree.addressbook.bean.AddressBook;
 import uk.co.gumtree.addressbook.bean.Contact;
 import uk.co.gumtree.addressbook.enums.Gender;
 
-import java.util.List;
-
 public class AddressBookService {
     private final AddressBook addressBook;
 
