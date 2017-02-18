@@ -31,7 +31,7 @@ public class AddressBookService {
     public Contact getContactByName(String name) {
         return addressBook.getContacts()
                 .stream()
-                .filter(e -> e.getName().equals(name))
+                .filter(e -> e.getName().equalsIgnoreCase(name))
                 .findFirst()
                 .get();
     }

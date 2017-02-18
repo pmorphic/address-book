@@ -91,6 +91,15 @@ public class AddressBookServiceTest {
         assertEquals(oldestContact, actual);
     }
 
+    @Test
+    public void itShouldReturnContactByNameCaseInsensitive() {
+        when(addressBook.getContacts()).thenReturn(getDefaultContacts());
+
+        Contact actual = underTest.getContactByName(oldestContact.getName().toUpperCase());
+
+        assertEquals(oldestContact, actual);
+    }
+
     private List<Contact> getDefaultContacts() {
         Contact contact1 = ContactFactory.fromAddressBookFileLine("Bill McKnight, Male, 16/03/77");
         Contact contact2 = ContactFactory.fromAddressBookFileLine("Paul Robinson, Male, 15/01/85");
