@@ -11,12 +11,12 @@ import uk.co.gumtree.addressbook.bean.Contact;
 import uk.co.gumtree.addressbook.enums.Gender;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AddressBookServiceTest {
@@ -111,13 +111,25 @@ public class AddressBookServiceTest {
 
     @Test
     public void itShouldAddContact() {
-        when(addressBook.getContacts()).thenReturn(ImmutableList.of(oldestContact));
+        when(addressBook.getContacts()).thenReturn(new ArrayList<Contact>());
 
         underTest.addContact(oldestContact);
 
         verify(addressBook).addContact(oldestContact);
     }
-    
+
+    @Test
+    public void itShouldNotAddIfContactNameAlreadyExist() {
+        Contact contact1 = new Contact("name", Gender.F, new Date());
+        when(addressBook.getContacts()).thenReturn(ImmutableList.of(contact1));
+        Contact contact2 = new Contact("name", Gender.M, new Date());
+
+        underTest.addContact(contact2);
+
+        verify(addressBook).getContacts();
+        verifyNoMoreInteractions(addressBook);
+    }
+
     private List<Contact> getDefaultContacts() {
         Contact contact1 = ContactFactory.fromAddressBookFileLine("Bill McKnight, Male, 16/03/77");
         Contact contact2 = ContactFactory.fromAddressBookFileLine("Paul Robinson, Male, 15/01/85");

@@ -1,10 +1,14 @@
 package uk.co.gumtree.addressbook.service;
 
+import org.apache.log4j.Logger;
 import uk.co.gumtree.addressbook.bean.AddressBook;
 import uk.co.gumtree.addressbook.bean.Contact;
 import uk.co.gumtree.addressbook.enums.Gender;
 
+import java.util.Optional;
+
 public class AddressBookService {
+    private static final Logger LOG = Logger.getLogger(AddressBookService.class);
     private final AddressBook addressBook;
 
     public AddressBookService(AddressBook addressBook) {
@@ -35,6 +39,18 @@ public class AddressBookService {
     }
 
     public void addContact(Contact contact) {
+        Optional<Contact> contactOptional = addressBook.getContacts()
+                .stream()
+                .filter(e -> e.getName().equalsIgnoreCase(contact.getName()))
+                .findAny();
+
+        if (contactOptional.isPresent()) {
+            LOG.error("Unable to add contact as name (" + contact.getName() + ") already exists");
+            return;
+        }
+
         addressBook.addContact(contact);
+
     }
+
 }

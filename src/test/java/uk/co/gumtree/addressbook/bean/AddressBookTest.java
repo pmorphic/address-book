@@ -32,16 +32,6 @@ public class AddressBookTest {
     }
 
     @Test
-    public void itShouldNotAddIfContactNameAlreadyExist() {
-        Contact contact1 = new Contact("name", Gender.F, new Date());
-        Contact contact2 = new Contact("name", Gender.M, new Date());
-        underTest.addContact(contact1);
-        underTest.addContact(contact2);
-        assertEquals(1, underTest.getContacts().size());
-        assertEquals(contact1, underTest.getContacts().get(0));
-    }
-
-    @Test
     public void itShouldEmptyListIfNoContacts() throws ParseException {
         assertEquals(0, underTest.getContacts().size());
     }

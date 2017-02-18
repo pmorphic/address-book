@@ -18,9 +18,6 @@ public class AddressBook {
     }
 
     public void addContact(Contact contact) {
-        Optional<Contact> contactOptional = contacts.stream().filter(e -> e.getName().equalsIgnoreCase(contact.getName())).findAny();
-        if (!contactOptional.isPresent()) {
-            contacts.add(contact);
-        }
+        contacts.add(contact);
     }
 }
