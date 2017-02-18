@@ -1,12 +1,9 @@
 package uk.co.gumtree.addressbook.service;
 
 import uk.co.gumtree.addressbook.bean.AddressBook;
-import uk.co.gumtree.addressbook.bean.Contact;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.text.ParseException;
 import java.util.Objects;
 
 public class InputReader {
