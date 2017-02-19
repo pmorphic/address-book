@@ -1,6 +1,8 @@
 package uk.co.gumtree.addressbook.service;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import uk.co.gumtree.addressbook.bean.AddressBook;
 import uk.co.gumtree.addressbook.bean.Contact;
 import uk.co.gumtree.addressbook.enums.Gender;
@@ -9,10 +11,12 @@ import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
+@Service
 public class AddressBookService {
     private static final Logger LOG = Logger.getLogger(AddressBookService.class);
     private final AddressBook addressBook;
 
+    @Autowired
     public AddressBookService(AddressBook addressBook) {
         this.addressBook = addressBook;
     }

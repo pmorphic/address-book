@@ -1,6 +1,7 @@
 package uk.co.gumtree.addressbook;
 
 import org.apache.log4j.Logger;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import uk.co.gumtree.addressbook.bean.AddressBook;
 import uk.co.gumtree.addressbook.bean.Contact;
 import uk.co.gumtree.addressbook.enums.Gender;
@@ -9,6 +10,7 @@ import uk.co.gumtree.addressbook.service.InputReader;
 
 import java.io.IOException;
 
+@SpringBootApplication
 public class Application {
     private static final Logger LOG = Logger.getLogger(Application.class);
 

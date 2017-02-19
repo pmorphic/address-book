@@ -1,11 +1,13 @@
 package uk.co.gumtree.addressbook.bean;
 
 import com.google.common.collect.ImmutableList;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class AddressBook {
     private final List<Contact> contacts;
 
