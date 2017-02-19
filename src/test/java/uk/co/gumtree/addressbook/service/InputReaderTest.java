@@ -8,6 +8,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import uk.co.gumtree.addressbook.bean.AddressBook;
 import uk.co.gumtree.addressbook.bean.Contact;
 
@@ -22,29 +24,23 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 
 @RunWith(MockitoJUnitRunner.class)
 public class InputReaderTest {
-    private InputReader underTest;
     @Mock
     AddressBookService addressBookService;
 
-    @Before
-    public void setUp() throws Exception {
-        underTest = new InputReader(addressBookService);
-    }
-
     @Test
-    public void itShouldReturnAddressBookForGivenInputFile() throws IOException {
-        String filePath = getClass().getResource("/addressBookValid").getPath();
+    public void itShouldReadForGivenInputFile() throws IOException {
+        Resource inputResource = new ClassPathResource("/addressBookValid");
 
-        underTest.read(filePath);
+        new InputReader(addressBookService, inputResource);
 
         verify(addressBookService, times(5)).addContact(isA(Contact.class));
     }
 
     @Test
     public void itShouldIgnoreInvalidAddressBookLines() throws IOException {
-        String filePath = getClass().getResource("/addressBookInvalid").getPath();
+        Resource inputResource = new ClassPathResource("/addressBookInvalid");
 
-        underTest.read(filePath);
+        new InputReader(addressBookService, inputResource);
 
         verifyZeroInteractions(addressBookService);
     }
