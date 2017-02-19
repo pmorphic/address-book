@@ -5,6 +5,8 @@ import uk.co.gumtree.addressbook.bean.AddressBook;
 import uk.co.gumtree.addressbook.bean.Contact;
 import uk.co.gumtree.addressbook.enums.Gender;
 
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
 public class AddressBookService {
@@ -53,7 +55,11 @@ public class AddressBookService {
     }
 
 
-    public int getAgeDifferenceInDays(Contact contact1, Contact contact2) {
-        return 0;
+    public long getAgeDifferenceInDays(Contact contact1, Contact contact2) {
+        if (contact1 == null || contact2 == null) {
+            return 0;
+        }
+
+        return ChronoUnit.DAYS.between(contact1.getDateOfBirth().toInstant(), contact2.getDateOfBirth().toInstant());
     }
 }

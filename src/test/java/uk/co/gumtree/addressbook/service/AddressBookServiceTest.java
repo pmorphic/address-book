@@ -134,9 +134,26 @@ public class AddressBookServiceTest {
     public void itShouldReturnAgeDifference0ForSameContact() {
         Contact contact1 = ContactFactory.fromAddressBookFileLine("Bill McKnight, Male, 16/03/77");
 
-        int actual = underTest.getAgeDifferenceInDays(contact1, contact1);
+        long actual = underTest.getAgeDifferenceInDays(contact1, contact1);
 
         assertEquals(0, actual);
+    }
+
+    @Test
+    public void itShouldReturnAgeDifference0IfContactIsNull() {
+        long actual = underTest.getAgeDifferenceInDays(null, null);
+
+        assertEquals(0, actual);
+    }
+
+    @Test
+    public void itShouldReturnAgeDifference() {
+        Contact contact1 = ContactFactory.fromAddressBookFileLine("Bill McKnight, Male, 16/03/77");
+        Contact contact2 = ContactFactory.fromAddressBookFileLine("Paul Robinson, Male, 15/01/85");
+
+        long actual = underTest.getAgeDifferenceInDays(contact1, contact2);
+
+        assertEquals(2862, actual);
     }
 
 
