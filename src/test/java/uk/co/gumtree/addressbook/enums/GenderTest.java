@@ -8,8 +8,8 @@ public class GenderTest {
 
     @Test
     public void itShouldReturnEnumFromName() {
-        assertEquals(Gender.M, Gender.fromName("Male"));
-        assertEquals(Gender.F, Gender.fromName("Female"));
+        assertEquals(Gender.MALE, Gender.fromName("Male"));
+        assertEquals(Gender.FEMALE, Gender.fromName("Female"));
     }
 
 }

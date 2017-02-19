@@ -34,7 +34,7 @@ public class AddressBookServiceTest {
     public void itShouldReturn0NumberOfMalesIfAddressBookEmpty() {
         when(addressBook.getContacts()).thenReturn(new ArrayList<Contact>());
 
-        long actual = underTest.getCountByGender(Gender.M);
+        long actual = underTest.getCountByGender(Gender.MALE);
 
         assertEquals(0, actual);
     }
@@ -43,7 +43,7 @@ public class AddressBookServiceTest {
     public void itShouldReturnNumberOfMales() {
         when(addressBook.getContacts()).thenReturn(getDefaultContacts());
 
-        long actual = underTest.getCountByGender(Gender.M);
+        long actual = underTest.getCountByGender(Gender.MALE);
 
         assertEquals(3, actual);
     }
@@ -52,7 +52,7 @@ public class AddressBookServiceTest {
     public void itShouldReturnNumberOfFemales() {
         when(addressBook.getContacts()).thenReturn(getDefaultContacts());
 
-        long actual = underTest.getCountByGender(Gender.F);
+        long actual = underTest.getCountByGender(Gender.FEMALE);
 
         assertEquals(2, actual);
     }
@@ -120,9 +120,9 @@ public class AddressBookServiceTest {
 
     @Test
     public void itShouldNotAddIfContactNameAlreadyExist() {
-        Contact contact1 = new Contact("name", Gender.F, new Date());
+        Contact contact1 = new Contact("name", Gender.FEMALE, new Date());
         when(addressBook.getContacts()).thenReturn(ImmutableList.of(contact1));
-        Contact contact2 = new Contact("name", Gender.M, new Date());
+        Contact contact2 = new Contact("name", Gender.MALE, new Date());
 
         underTest.addContact(contact2);
 

@@ -15,10 +15,10 @@ public class ContactTest {
     public void itShouldCreate() throws ParseException {
         Date dob = Calendar.getInstance().getTime();
 
-        Contact contact = new Contact("Bill McKnight", Gender.M, dob);
+        Contact contact = new Contact("Bill McKnight", Gender.MALE, dob);
 
         assertEquals("Bill McKnight", contact.getName());
-        assertEquals(Gender.M, contact.getGender());
+        assertEquals(Gender.MALE, contact.getGender());
         assertEquals(dob, contact.getDateOfBirth());
     }
 

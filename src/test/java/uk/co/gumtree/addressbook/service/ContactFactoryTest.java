@@ -19,7 +19,7 @@ public class ContactFactoryTest {
         Contact contact = ContactFactory.fromAddressBookFileLine("Bill McKnight, Male, 16/03/77").get();
 
         assertEquals("Bill McKnight", contact.getName());
-        assertEquals(Gender.M, contact.getGender());
+        assertEquals(Gender.MALE, contact.getGender());
         assertEquals(expectedDob, contact.getDateOfBirth());
     }
 

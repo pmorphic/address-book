@@ -23,7 +23,7 @@ public class Application {
 
         inputReader.read(args[0]);
 
-        long numberOfMales = addressBookService.getCountByGender(Gender.M);
+        long numberOfMales = addressBookService.getCountByGender(Gender.MALE);
         Contact oldestContact = addressBookService.getOldestContact();
         long ageDifferenceInDays = addressBookService.getAgeDifferenceInDays("Bill McKnight", "Paul Robinson");
 

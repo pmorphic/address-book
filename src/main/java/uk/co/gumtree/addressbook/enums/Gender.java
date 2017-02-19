@@ -3,8 +3,8 @@ package uk.co.gumtree.addressbook.enums;
 import java.util.Arrays;
 
 public enum Gender {
-    M("Male"),
-    F("Female");
+    MALE("Male"),
+    FEMALE("Female");
 
     private String name;
 
