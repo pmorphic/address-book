@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Objects;
+import java.util.Optional;
 
 public class InputReader {
 
@@ -17,7 +18,8 @@ public class InputReader {
     public void read(String filePath) throws IOException {
         Files.lines(Paths.get(filePath))
                 .map(ContactFactory::fromAddressBookFileLine)
-                .filter(Objects::nonNull)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
                 .forEach(addressBookService::addContact);
     }
 

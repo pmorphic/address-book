@@ -21,7 +21,7 @@ import static org.mockito.Mockito.*;
 @RunWith(MockitoJUnitRunner.class)
 public class AddressBookServiceTest {
     @Mock private AddressBook addressBook;
-    private Contact oldestContact = ContactFactory.fromAddressBookFileLine("Wes Jackson, Male, 14/08/74");
+    private Contact oldestContact = ContactFactory.fromAddressBookFileLine("Wes Jackson, Male, 14/08/74").get();
 
     private AddressBookService underTest;
 
@@ -166,10 +166,10 @@ public class AddressBookServiceTest {
 
 
     private List<Contact> getDefaultContacts() {
-        Contact contact1 = ContactFactory.fromAddressBookFileLine("Bill McKnight, Male, 16/03/77");
-        Contact contact2 = ContactFactory.fromAddressBookFileLine("Paul Robinson, Male, 15/01/85");
-        Contact contact3 = ContactFactory.fromAddressBookFileLine("Gemma Lane, Female, 20/11/91");
-        Contact contact4 = ContactFactory.fromAddressBookFileLine("Sarah Stone, Female, 20/09/80");
+        Contact contact1 = ContactFactory.fromAddressBookFileLine("Bill McKnight, Male, 16/03/77").get();
+        Contact contact2 = ContactFactory.fromAddressBookFileLine("Paul Robinson, Male, 15/01/85").get();
+        Contact contact3 = ContactFactory.fromAddressBookFileLine("Gemma Lane, Female, 20/11/91").get();
+        Contact contact4 = ContactFactory.fromAddressBookFileLine("Sarah Stone, Female, 20/09/80").get();
         return ImmutableList.of(contact1, contact2, contact3, contact4, oldestContact);
     }
 
