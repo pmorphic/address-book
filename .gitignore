@@ -25,13 +25,13 @@ hs_err_pid*
 .idea/inspectionProfiles/Project_Default.xml
 .idea/libraries/Maven__com_google_guava_guava_21_0.xml
 target/classes/log4j.properties
-target/surefire-reports/TEST-uk.co.gumtree.addressbook.AppTest.xml
+target/surefire-reports/TEST-uk.co.gumtree.addressbook.ApplicationTest.xml
 target/surefire-reports/TEST-uk.co.gumtree.addressbook.bean.AddressBookTest.xml
 target/surefire-reports/TEST-uk.co.gumtree.addressbook.bean.ContactTest.xml
 target/surefire-reports/TEST-uk.co.gumtree.addressbook.enums.GenderTest.xml
 target/surefire-reports/TEST-uk.co.gumtree.addressbook.service.ContactFactoryTest.xml
 target/surefire-reports/TEST-uk.co.gumtree.addressbook.service.InputReaderTest.xml
-target/surefire-reports/uk.co.gumtree.addressbook.AppTest.txt
+target/surefire-reports/uk.co.gumtree.addressbook.ApplicationTest.txt
 target/surefire-reports/uk.co.gumtree.addressbook.bean.AddressBookTest.txt
 target/surefire-reports/uk.co.gumtree.addressbook.bean.ContactTest.txt
 target/surefire-reports/uk.co.gumtree.addressbook.enums.GenderTest.txt

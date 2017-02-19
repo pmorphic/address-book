@@ -55,7 +55,10 @@ public class AddressBookService {
     }
 
 
-    public long getAgeDifferenceInDays(Contact contact1, Contact contact2) {
+    public long getAgeDifferenceInDays(String name1, String name2) {
+        Contact contact1 = getContactByName(name1);
+        Contact contact2 = getContactByName(name2);
+
         if (contact1 == null || contact2 == null) {
             return 0;
         }
