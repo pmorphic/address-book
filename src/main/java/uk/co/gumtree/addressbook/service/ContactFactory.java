@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.NoSuchElementException;
 
 public class ContactFactory {
-    static final SimpleDateFormat DOB_FORMATTER = new SimpleDateFormat("d/M/yy");
+    public static final SimpleDateFormat DOB_FORMATTER = new SimpleDateFormat("d/M/yy");
     private static final Logger LOG = Logger.getLogger(ContactFactory.class);
 
     public static Contact fromAddressBookFileLine(String line) {

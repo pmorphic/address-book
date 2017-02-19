@@ -1,8 +1,8 @@
 package uk.co.gumtree.addressbook.bean;
 
 import uk.co.gumtree.addressbook.enums.Gender;
+import uk.co.gumtree.addressbook.service.ContactFactory;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -34,7 +34,7 @@ public class Contact {
         final StringBuilder sb = new StringBuilder("Contact{");
         sb.append("name='").append(name).append('\'');
         sb.append(", gender=").append(gender);
-        sb.append(", dateOfBirth=").append(dateOfBirth);
+        sb.append(", dateOfBirth=").append(ContactFactory.DOB_FORMATTER.format(dateOfBirth));
         sb.append('}');
         return sb.toString();
     }
