@@ -155,6 +155,15 @@ public class AddressBookServiceTest {
         assertEquals(2862, actual);
     }
 
+    @Test
+    public void itShouldReturnAgeDifferenceInNegativeIfContact1IsYounger() {
+        when(addressBook.getContacts()).thenReturn(getDefaultContacts());
+
+        long actual = underTest.getAgeDifferenceInDays("Paul Robinson", "Bill McKnight");
+
+        assertEquals(-2862, actual);
+    }
+
 
     private List<Contact> getDefaultContacts() {
         Contact contact1 = ContactFactory.fromAddressBookFileLine("Bill McKnight, Male, 16/03/77");
